@@ -1,6 +1,6 @@
 'use strict';
 
-var timesOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm:', '5pm', '6pm: ', '7pm: ', '8pm: ', 'Total: '];
+var timesOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm:', '5pm: ', '6pm: ', '7pm: ', '8pm: ', 'Total: '];
 
 function createList(location) {
   var container = document.createElement('div'); // make a container
@@ -9,14 +9,14 @@ function createList(location) {
 
   var pairsList = []; // combining the the location sales array with the time of day array
 
-  for (var k = 0; k < 16; k++0) {
-    pairsList.push(timesOfDay[k] + location.salesByHour[k] + ' cookies')
+  for (var k = 0; k < 16; k++) {
+    pairsList.push(timesOfDay[k] + location.salesByHour()[k] + ' cookies');
   }
 
   var list= document.createElement('ul'); // create the list html
   var listArr = [];
 
-  for (var m = 0; m < 16; m++) { //loops the list array to 
+  for (var m = 0; m < 16; m++) { //loops the list array to
     listArr.push('<li>' + pairsList[m] + '</li>');
   }
 
