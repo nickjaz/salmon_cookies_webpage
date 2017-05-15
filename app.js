@@ -1,6 +1,23 @@
 'use strict';
 
-var timesOfDay = ['6am:', '7am:', '8am:', '9am:', '10am:', '11am:', '12pm:', '1pm:', '2pm:', '3pm:', '4pm:', '5pm', '6pm:', '7pm:', '8pm:']
+var timesOfDay = ['6am:', '7am:', '8am:', '9am:', '10am:', '11am:', '12pm:', '1pm:', '2pm:', '3pm:', '4pm:', '5pm', '6pm:', '7pm:', '8pm:'];
+
+function createList(location) {
+  var container = document.createElement('div'); // make a container
+  container.innerHTML = '<h2>' + location.name + '</h2>';
+  document.body.appendChild(container);
+
+  var list= document.createElement('ul'); // create the list
+  var listArr = [];
+
+  for (var k = 0; k < 15; k++) {
+    listArr.push('<li>' + location.salesByHour()[k] + '</li>');
+  }
+
+  var full_list = listArr.join('');
+  list.innerHTML = full_list;
+  document.body.appendChild(list);
+}
 
 var firstAndPike = {
   name: '1st and Pike',
