@@ -10,10 +10,13 @@ var firstAndPike = {
     console.log(customers);
     return customers;
   },
-  salesPerHour: function() {
-    var sales = this.custPerHour * this.avgSales;
-    console.log(sales);
-    return sales;
+
+  salesByHour: function() {
+    var hourlySales = [];
+    for (var i = 0; i < 14; i++) {
+      var sales = this.custPerHour() * this.avgSales;
+      hourlySales.push(Math.ceil(sales));
+    }
   }
 
 };
