@@ -1,17 +1,23 @@
 'use strict';
 
-var timesOfDay = ['6am:', '7am:', '8am:', '9am:', '10am:', '11am:', '12pm:', '1pm:', '2pm:', '3pm:', '4pm:', '5pm', '6pm:', '7pm:', '8pm:'];
+var timesOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm:', '5pm', '6pm: ', '7pm: ', '8pm: ', 'Total: '];
 
 function createList(location) {
   var container = document.createElement('div'); // make a container
   container.innerHTML = '<h2>' + location.name + '</h2>';
   document.body.appendChild(container);
 
-  var list= document.createElement('ul'); // create the list
+  var pairsList = []; // combining the the location sales array with the time of day array
+
+  for (var k = 0; k < 16; k++0) {
+    pairsList.push(timesOfDay[k] + location.salesByHour[k] + ' cookies')
+  }
+
+  var list= document.createElement('ul'); // create the list html
   var listArr = [];
 
-  for (var k = 0; k < 15; k++) {
-    listArr.push('<li>' + location.salesByHour()[k] + '</li>');
+  for (var m = 0; m < 16; m++) { //loops the list array to 
+    listArr.push('<li>' + pairsList[m] + '</li>');
   }
 
   var full_list = listArr.join('');
@@ -31,12 +37,12 @@ var firstAndPike = {
   },
   salesByHour: function() { //an array of sales by the hour ranging 14 hours
     var hourlySales = [];
-    for (var i = 0; i < 14; i++) {
+    for (var i = 0; i < 15; i++) {
       var sales = this.custPerHour() * this.avgSales;
       hourlySales.push(Math.ceil(sales));
     }
     var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 14; j++) {
+    for (var j = 0; j < 15; j++) {
       totalSales = hourlySales[j] + totalSales;
     }
     hourlySales.push(totalSales); //pushes total to end of the array
@@ -57,12 +63,12 @@ var seaTacAirport = {
   },
   salesByHour: function() { //an array of sales by the hour ranging 14 hours
     var hourlySales = [];
-    for (var i = 0; i < 14; i++) {
+    for (var i = 0; i < 15; i++) {
       var sales = this.custPerHour() * this.avgSales;
       hourlySales.push(Math.ceil(sales));
     }
     var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 14; j++) {
+    for (var j = 0; j < 15; j++) {
       totalSales = hourlySales[j] + totalSales;
     }
     hourlySales.push(totalSales); //pushes total to end of the array
@@ -83,12 +89,12 @@ var seattleCenter = {
   },
   salesByHour: function() { //an array of sales by the hour ranging 14 hours
     var hourlySales = [];
-    for (var i = 0; i < 14; i++) {
+    for (var i = 0; i < 15; i++) {
       var sales = this.custPerHour() * this.avgSales;
       hourlySales.push(Math.ceil(sales));
     }
     var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 14; j++) {
+    for (var j = 0; j < 15; j++) {
       totalSales = hourlySales[j] + totalSales;
     }
     hourlySales.push(totalSales); //pushes total to end of the array
@@ -109,12 +115,12 @@ var capitolHill = {
   },
   salesByHour: function() { //an array of sales by the hour ranging 14 hours
     var hourlySales = [];
-    for (var i = 0; i < 14; i++) {
+    for (var i = 0; i < 15; i++) {
       var sales = this.custPerHour() * this.avgSales;
       hourlySales.push(Math.ceil(sales));
     }
     var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 14; j++) {
+    for (var j = 0; j < 15; j++) {
       totalSales = hourlySales[j] + totalSales;
     }
     hourlySales.push(totalSales); //pushes total to end of the array
@@ -135,12 +141,12 @@ var alki = {
   },
   salesByHour: function() { //an array of sales by the hour ranging 14 hours
     var hourlySales = [];
-    for (var i = 0; i < 14; i++) {
+    for (var i = 0; i < 15; i++) {
       var sales = this.custPerHour() * this.avgSales;
       hourlySales.push(Math.ceil(sales));
     }
     var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 14; j++) {
+    for (var j = 0; j < 15; j++) {
       totalSales = hourlySales[j] + totalSales;
     }
     hourlySales.push(totalSales); //pushes total to end of the array
@@ -148,3 +154,13 @@ var alki = {
     return hourlySales;
   }
 };
+
+createList(firstAndPike);
+
+createList(seaTacAirport);
+
+createList(seattleCenter);
+
+createList(capitolHill);
+
+createList(alki);
