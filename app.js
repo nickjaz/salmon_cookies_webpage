@@ -35,7 +35,7 @@ var firstAndPike = {
     console.log(customers);
     return customers;
   },
-  salesByHour: function() { //an array of sales by the hour ranging 14 hours
+  salesByHour: function() { //an array of sales by the hour ranging 15 hours
     var hourlySales = [];
     for (var i = 0; i < 15; i++) {
       var sales = this.custPerHour() * this.avgSales;

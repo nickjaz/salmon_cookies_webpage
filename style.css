@@ -1,0 +1,60 @@
+
+
+body {
+  background: url(https://ak3.picdn.net/shutterstock/videos/12227033/thumb/1.jpg) fixed center;
+  background-size: 100%;
+}
+
+header {
+  height: 80px;
+  width: 100%;
+  position:fixed;
+  top: 0;
+  left: 0;
+  background: #7F701E;
+  color: #FFEC88;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'roboto';
+}
+
+img {
+  width: 150px;
+}
+
+main {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.location {
+  height: 50%;
+  width: 50%;
+  margin: 180px auto 20px auto;
+  background-color: #7F7644;
+  color: #FFE03C;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+.location h2 {
+  font-size: 35px;
+  letter-spacing: 10px;
+}
+
+.hours {
+  height: 35%;
+  width: 40%;
+  margin: 0 auto;
+  padding: 5px;
+  background-color: #FFEC88;
+  color: #7F701E;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.hours h2 {
+  font-size: 25px;
+  letter-spacing: 5px;
+}
