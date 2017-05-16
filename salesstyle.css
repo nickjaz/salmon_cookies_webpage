@@ -1,0 +1,34 @@
+
+body {
+  background: url(https://ak3.picdn.net/shutterstock/videos/12227033/thumb/1.jpg) fixed center;
+  background-size: 100%;
+}
+
+div {
+  width: 50%;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #7F7644;
+  color: #FFE03C;
+  text-align: center;
+  font-family: "Times New Roman", serif;
+  border: 3px double #FFE03C;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+ul {
+  width: 30%;
+  margin: 15px auto;
+  padding: 10px;
+  background-color: #7F701E;
+  color: #FFEC88;
+  text-align: center;
+  border: 3px double #FFEC88;
+}
+
+li{
+  font-size: 25px;
+}
