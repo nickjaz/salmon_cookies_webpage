@@ -4,15 +4,20 @@ body {
   font-family: "Helvetica" serif;
 }
 
-thead {
-  padding: 10px;
+table {
+  margin-top: 100px;
+}
+
+thead td {
+  padding: 15px;
   background-color: #7F7644;
   color: #FFE03C;
+  font-weight: bold;
 }
 
 td {
   padding: 20px;
   background-color: #FFEC88;
   color: #7F701E;
-  border: solid 2px ;
+  border: solid 2px;
 }

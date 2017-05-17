@@ -4,14 +4,14 @@
 var thead = document.getElementById('thead');
 var headValues = ['','6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', 'Daily Location Total'];
 
-// creates the newRow to be used to build the DOM
-var newRow;
+// creates the newHead to be used to build the DOM
+var newHead;
 
 //loops the headValues in the array above and puts them in the DOM table head
 for (var a = 0; a < headValues.length; a++) {
-  newRow = document.createElement('td');
-  newRow.innerHTML = headValues[a];
-  thead.appendChild(newRow);
+  newHead = document.createElement('td');
+  newHead.innerHTML = headValues[a];
+  thead.appendChild(newHead);
 }
 
 //constructor function
@@ -91,6 +91,8 @@ for (var y = 0; y < 15; y++) {
 data.push(grandDataList);
 
 //placing all the data collected in the data array into the DOM
+var newRow;
+
 for (var z = 0; z < data.length; z++) {
   newRow = document.createElement('tr');
   newRow.innerHTML = data[z];
