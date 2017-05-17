@@ -1,9 +1,18 @@
+body {
+  background: url(https://ak3.picdn.net/shutterstock/videos/12227033/thumb/1.jpg) fixed center;
+  background-size: 100%;
+  font-family: "Helvetica" serif;
+}
+
 thead {
-  background: #888;
   padding: 10px;
+  background-color: #7F7644;
+  color: #FFE03C;
 }
 
 td {
   padding: 20px;
-  border: solid 1px black;
+  background-color: #FFEC88;
+  color: #7F701E;
+  border: solid 2px ;
 }
