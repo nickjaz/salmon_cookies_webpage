@@ -1,166 +1,100 @@
 'use strict';
 
-var timesOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm:', '5pm: ', '6pm: ', '7pm: ', '8pm: ', 'Total: '];
+//created the table header here
+var thead = document.getElementById('thead');
+var headValues = ['','6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', 'Daily Location Total'];
 
-function createList(location) {
-  var container = document.createElement('div'); // make a container
-  container.innerHTML = '<h2>' + location.name + '</h2>';
-  document.body.appendChild(container);
+// creates the newHead to be used to build the DOM
+var newHead;
 
-  var pairsList = []; // combining the the location sales array with the time of day array
-
-  for (var k = 0; k < 16; k++) {
-    pairsList.push(timesOfDay[k] + location.salesByHour()[k] + ' cookies');
-  }
-
-  var list= document.createElement('ul'); // create the list html
-  var listArr = [];
-
-  for (var m = 0; m < 16; m++) { //loops the list array to
-    listArr.push('<li>' + pairsList[m] + '</li>');
-  }
-
-  var full_list = listArr.join('');
-  list.innerHTML = full_list;
-  document.body.appendChild(list);
+//loops the headValues in the array above and puts them in the DOM table head
+for (var a = 0; a < headValues.length; a++) {
+  newHead = document.createElement('td');
+  newHead.innerHTML = headValues[a];
+  thead.appendChild(newHead);
 }
 
-var firstAndPike = {
-  name: '1st and Pike',
-  minCust: 23,
-  maxCust: 65,
-  avgSales: 6.3,
-  custPerHour: function() {
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function() { //an array of sales by the hour ranging 15 hours
-    var hourlySales = [];
-    for (var i = 0; i < 15; i++) {
-      var sales = this.custPerHour() * this.avgSales;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 15; j++) {
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales); //pushes total to end of the array
-    //console.log(hourlySales);
-    return hourlySales;
-  }
+//constructor function
+function Store(name, minCust, maxCust, avgSales) {
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgSales = avgSales;
+  this.hourlySales = [];
+}
+
+//prototype chain methods
+Store.prototype.custPerHour = function() {
+  var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
+  return customers;
 };
 
-var seaTacAirport = {
-  name: 'SeaTac Airport',
-  minCust: 3,
-  maxCust: 24,
-  avgSales: 1.2,
-  custPerHour: function() {
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function() { //an array of sales by the hour ranging 14 hours
-    var hourlySales = [];
-    for (var i = 0; i < 15; i++) {
-      var sales = this.custPerHour() * this.avgSales;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 15; j++) {
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales); //pushes total to end of the array
-    //console.log(hourlySales);
-    return hourlySales;
+//an array of sales by the hour ranging 14 hours
+Store.prototype.salesByHour = function() {
+  for (var i = 0; i < 14; i++) {
+    var sales = this.custPerHour() * this.avgSales;
+    this.hourlySales.push(Math.ceil(sales));
   }
+
+  //adds the sales per hour together with the loop
+  var totalSales = 0;
+  for (var j = 0; j < this.hourlySales.length; j++) {
+    totalSales = this.hourlySales[j] + totalSales;
+  }
+  this.hourlySales.push(totalSales); //pushes total to end of the array
+  return this.hourlySales;
 };
 
-var seattleCenter = {
-  name: 'Seattle Center',
-  minCust: 11,
-  maxCust: 38,
-  avgSales: 3.7,
-  custPerHour: function() {
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function() { //an array of sales by the hour ranging 14 hours
-    var hourlySales = [];
-    for (var i = 0; i < 15; i++) {
-      var sales = this.custPerHour() * this.avgSales;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 15; j++) {
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales); //pushes total to end of the array
-    //console.log(hourlySales);
-    return hourlySales;
+// the store objects pass in their arguments
+var firstAndPike = new Store('1st and Pike', 23, 65, 6.3);
+var seaTacAirport = new Store('SeaTac Airport', 3, 24, 1.2);
+var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
+var capitolHill = new Store('Capitol Hill', 20, 38, 2.3);
+var alki = new Store('Alki', 2, 16, 4.6);
+
+//array of the store loactions to be used in DOM building loops
+var locations = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki];
+
+for (var k = 0; k < locations.length; k++) {
+  locations[k].salesByHour();
+}
+
+//filling out the bulk of the table by looping the objects values and assigning them to a data array
+var table = document.getElementById('shell');
+var data = [];
+
+for (var m = 0; m < locations.length; m++) {
+  var dataList = '<td>' + locations[m].name + '</td>';
+  for (var n = 0; n < 15; n++) {
+    dataList = dataList + '<td>' + locations[m].hourlySales[n] + '</td>';
   }
-};
+  data.push(dataList);
+}
 
-var capitolHill = {
-  name: 'Capitol Hill',
-  minCust: 20,
-  maxCust: 38,
-  avgSales: 2.3,
-  custPerHour: function() {
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function() { //an array of sales by the hour ranging 14 hours
-    var hourlySales = [];
-    for (var i = 0; i < 15; i++) {
-      var sales = this.custPerHour() * this.avgSales;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 15; j++) {
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales); //pushes total to end of the array
-    //console.log(hourlySales);
-    return hourlySales;
-  }
-};
+//calculating the grand total of all store sales for each an hour
+var grandTotal = [];
+for (var x = 0; x <15; x++) {
+  grandTotal.push(
+    locations[0].hourlySales[x] +
+    locations[1].hourlySales[x] +
+    locations[2].hourlySales[x] +
+    locations[3].hourlySales[x] +
+    locations[4].hourlySales[x]
+  );
+}
 
-var alki = {
-  name: 'Alki',
-  minCust: 11,
-  maxCust: 38,
-  avgSales: 3.7,
-  custPerHour: function() {
-    var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
-    console.log(customers);
-    return customers;
-  },
-  salesByHour: function() { //an array of sales by the hour ranging 14 hours
-    var hourlySales = [];
-    for (var i = 0; i < 15; i++) {
-      var sales = this.custPerHour() * this.avgSales;
-      hourlySales.push(Math.ceil(sales));
-    }
-    var totalSales = 0; //adds the sales per hour together with for loop
-    for (var j = 0; j < 15; j++) {
-      totalSales = hourlySales[j] + totalSales;
-    }
-    hourlySales.push(totalSales); //pushes total to end of the array
-    //console.log(hourlySales);
-    return hourlySales;
-  }
-};
+//assembling the grand total for the table
+var grandDataList = '<td>' + 'Totals' + '</td>';
+for (var y = 0; y < 15; y++) {
+  grandDataList = grandDataList + '<td>' + grandTotal[y] + '</td>';
+}
+data.push(grandDataList);
 
-createList(firstAndPike);
+//placing all the data collected in the data array into the DOM
+var newRow;
 
-createList(seaTacAirport);
-
-createList(seattleCenter);
-
-createList(capitolHill);
-
-createList(alki);
+for (var z = 0; z < data.length; z++) {
+  newRow = document.createElement('tr');
+  newRow.innerHTML = data[z];
+  table.appendChild(newRow);
+}
