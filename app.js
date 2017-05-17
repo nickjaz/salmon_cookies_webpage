@@ -1,19 +1,20 @@
 'use strict';
 
 //created the table header here
-var thead = document.getElementById('thead');
-var headValues = ['','6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', 'Daily Location Total'];
+function createTableHead() {
+  var thead = document.getElementById('thead');
+  var headValues = ['','6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', 'Daily Location Total'];
 
-// creates the newHead to be used to build the DOM
-var newHead;
+  // creates the newHead to be used to build the DOM
+  var newHead;
 
-//loops the headValues in the array above and puts them in the DOM table head
-for (var a = 0; a < headValues.length; a++) {
-  newHead = document.createElement('td');
-  newHead.innerHTML = headValues[a];
-  thead.appendChild(newHead);
+  //loops the headValues in the array above and puts them in the DOM table head
+  for (var a = 0; a < headValues.length; a++) {
+    newHead = document.createElement('td');
+    newHead.innerHTML = headValues[a];
+    thead.appendChild(newHead);
+  }
 }
-
 //constructor function
 function Store(name, minCust, maxCust, avgSales) {
   this.name = name;
@@ -25,7 +26,7 @@ function Store(name, minCust, maxCust, avgSales) {
 
 //prototype chain methods
 Store.prototype.custPerHour = function() {
-  var customers = Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust);
+  var customers = Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
   return customers;
 };
 
