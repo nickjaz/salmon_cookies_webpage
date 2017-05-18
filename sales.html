@@ -6,12 +6,50 @@
     <link rel="stylesheet" href="salesstyle.css">
   </head>
   <body>
-    <table>
-      <thead id="thead">
-      </thead>
-      <tbody id="shell"> 
-      </tbody>
-    </table>
+    <form id="store_form">
+      <fieldset>
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="enter store name here" required>
+      </fieldset>
+      <fieldset>
+        <label for="minCust">Min Customers:</label>
+        <input type="text" name="minCust" placeholder="min" required>
+      </fieldset>
+      <fieldset>
+        <label for="maxCust">Max Customers:</label>
+        <input type="text" name="maxCust" placeholder="max" required>
+      </fieldset>
+      <fieldset>
+        <label for="avgSales">Average Sales:</label>
+        <input type="text" name="avgSales" placeholder="avg" required>
+      </fieldset>
+      <button id="submit-btn" type="submit">Submit</button>
+    </form>
+
+    <section>
+      <table>
+        <thead id="thead">
+          <td></td>
+          <td>6:OOam</td>
+          <td>7:OOam</td>
+          <td>8:OOam</td>
+          <td>9:OOam</td>
+          <td>10:OOam</td>
+          <td>11:OOam</td>
+          <td>12:OOpm</td>
+          <td>1:OOpm</td>
+          <td>2:OOpm</td>
+          <td>3:OOpm</td>
+          <td>4:OOpm</td>
+          <td>5:OOpm</td>
+          <td>6:OOpm</td>
+          <td>7:OOpm</td>
+          <td>Daily Location Total</td>
+        </thead>
+        <tbody id="store_data">
+        </tbody>
+      </table>
+    </section>
     <script src="app.js"></script>
   </body>
 </html>
