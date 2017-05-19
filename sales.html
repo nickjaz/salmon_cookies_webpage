@@ -3,31 +3,43 @@
   <head>
     <title>Sales Database</title>
     <link rel="stylesheet" href="reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Chonburi" rel="stylesheet">
     <link rel="stylesheet" href="salesstyle.css">
   </head>
+
   <body>
+
     <form id="store_form">
+      <h1>Add a Store</h1>
+
       <fieldset>
         <label for="name">Name:</label>
         <input type="text" name="name" placeholder="enter store name here" required>
       </fieldset>
+
       <fieldset>
         <label for="minCust">Min Customers:</label>
         <input type="text" name="minCust" placeholder="min" required>
       </fieldset>
+
       <fieldset>
         <label for="maxCust">Max Customers:</label>
         <input type="text" name="maxCust" placeholder="max" required>
       </fieldset>
+
       <fieldset>
         <label for="avgSales">Average Sales:</label>
         <input type="text" name="avgSales" placeholder="avg" required>
       </fieldset>
-      <button id="submit-btn" type="submit">Submit</button>
+
+      <button id="submit-btn" type="submit">Add Store</button>
     </form>
 
     <section>
+
       <table>
+        <h2>Store Data</h2>
+
         <thead id="thead">
           <td></td>
           <td>6:OOam</td>
@@ -46,10 +58,12 @@
           <td>7:OOpm</td>
           <td>Daily Location Total</td>
         </thead>
+
         <tbody id="store_data">
         </tbody>
       </table>
     </section>
+
     <script src="app.js"></script>
   </body>
 </html>

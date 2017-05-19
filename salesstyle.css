@@ -4,12 +4,23 @@ body {
   font-family: "Helvetica" serif;
 }
 
+h1 {
+  font-size: 30px;
+  font-family: 'Chonburi';
+  margin-bottom: 10px;
+}
+
 form {
   background-color: #7F7644;
+  margin: 50px;
+  padding: 15px;
+  border: double 3px #FFE03C;
+  color: #FFE03C;
+  text-align: center;
 }
 
 fieldset {
-  padding: 20px;
+  padding: 10px;
 }
 
 input {
@@ -20,8 +31,7 @@ input {
 }
 
 button {
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin: 20px;
   padding: 8px, 18px;
   border: none;
   border-radius: 3px;
@@ -31,15 +41,30 @@ button {
   color: #7F701E;
 }
 
+h2 {
+  font-size: 25px;
+  font-family: 'Chonburi';
+  margin-bottom: 10px;
+  padding: 7px;
+  background-color: #FFEC88;
+  color: #7F701E;
+  border: double 5px;
+  text-align: center;
+}
+
+table {
+  margin-bottom: 50px;
+}
+
 thead td {
-  padding: 15px;
+  padding: 7px;
   background-color: #7F7644;
   color: #FFE03C;
   font-weight: bold;
 }
 
 td {
-  padding: 20px;
+  padding: 7px;
   background-color: #FFEC88;
   color: #7F701E;
   border: solid 2px;
