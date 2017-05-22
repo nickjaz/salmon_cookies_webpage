@@ -1,19 +1,5 @@
 'use strict';
 
-//created the table header here
-var thead = document.getElementById('thead');
-var headValues = ['','6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', 'Daily Location Total'];
-
-// creates the newHead to be used to build the DOM
-var newHead;
-
-//loops the headValues in the array above and puts them in the DOM table head
-for (var a = 0; a < headValues.length; a++) {
-  newHead = document.createElement('td');
-  newHead.innerHTML = headValues[a];
-  thead.appendChild(newHead);
-}
-
 //constructor function
 function Store(name, minCust, maxCust, avgSales) {
   this.name = name;
@@ -59,6 +45,24 @@ for (var k = 0; k < locations.length; k++) {
   locations[k].salesByHour();
 }
 
+//created the table header here
+function createHeader() {
+  var thead = document.getElementById('thead');
+  var headValues = ['','6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm', 'Daily Location Total'];
+
+  // creates the newHead to be used to build the DOM
+  var newHead;
+
+  //loops the headValues in the array above and puts them in the DOM table head
+  for (var a = 0; a < headValues.length; a++) {
+    newHead = document.createElement('td');
+    newHead.innerHTML = headValues[a];
+    thead.appendChild(newHead);
+  }
+}
+
+createHeader();
+
 //filling out the bulk of the table by looping the objects values and assigning them to a data array
 var table = document.getElementById('shell');
 var data = [];
@@ -71,25 +75,6 @@ for (var m = 0; m < locations.length; m++) {
   data.push(dataList);
 }
 
-//calculating the grand total of all store sales for each an hour
-var grandTotal = [];
-for (var x = 0; x <15; x++) {
-  grandTotal.push(
-    locations[0].hourlySales[x] +
-    locations[1].hourlySales[x] +
-    locations[2].hourlySales[x] +
-    locations[3].hourlySales[x] +
-    locations[4].hourlySales[x]
-  );
-}
-
-//assembling the grand total for the table
-var grandDataList = '<td>' + 'Totals' + '</td>';
-for (var y = 0; y < 15; y++) {
-  grandDataList = grandDataList + '<td>' + grandTotal[y] + '</td>';
-}
-data.push(grandDataList);
-
 //placing all the data collected in the data array into the DOM
 var newRow;
 
@@ -98,3 +83,34 @@ for (var z = 0; z < data.length; z++) {
   newRow.innerHTML = data[z];
   table.appendChild(newRow);
 }
+
+function createFooter() {
+  var tfoot = document.getElementById('tfoot');
+  var footValues = ['<td>'+ 'Totals' + '</td>'];
+
+
+  var grandTotal = [];
+  for (var x = 0; x <15; x++) {
+    grandTotal.push(
+      locations[0].hourlySales[x] +
+      locations[1].hourlySales[x] +
+      locations[2].hourlySales[x] +
+      locations[3].hourlySales[x] +
+      locations[4].hourlySales[x]
+    );
+  }
+
+  //assembling the grand total for the table
+  var grandDataList = [];
+  for (var y = 0; y < 15; y++) {
+    grandDataList = grandDataList + '<td>' + grandTotal[y] + '</td>';
+  }
+  footValues.push(grandDataList);
+
+  //loops the headValues in the array above and puts them in the DOM table head
+  var newFoot = document.createElement('tr');
+  newFoot.innerHTML = footValues.join('');
+  tfoot.appendChild(newFoot);
+}
+
+createFooter();
