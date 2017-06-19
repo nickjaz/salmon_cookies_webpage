@@ -90,16 +90,12 @@ function createFooter() {
 
 
   var grandTotal = [];
-  for (var x = 0; x <15; x++) {
-    grandTotal.push(
-      locations[0].hourlySales[x] +
-      locations[1].hourlySales[x] +
-      locations[2].hourlySales[x] +
-      locations[3].hourlySales[x] +
-      locations[4].hourlySales[x]
-    );
+  for (var b = 0; b < locations.length; b++){
+    grandTotal= 0;
+    for (var x = 0; x <15; x++) {
+      grandTotal.push(locations[b].hourlySales[x] + grandTotal);
+    }
   }
-
   //assembling the grand total for the table
   var grandDataList = [];
   for (var y = 0; y < 15; y++) {
